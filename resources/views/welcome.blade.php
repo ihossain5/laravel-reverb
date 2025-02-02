@@ -176,6 +176,7 @@
           window.addEventListener("DOMContentLoaded", function () {
             window.Echo.channel("reverb-test") 
                 .listen("TestEvent", (event) => {
+                    alert('event received: ' + event.message);
                     console.log("Event received:", event);
                 });
         });

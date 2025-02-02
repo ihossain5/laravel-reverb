@@ -13,13 +13,14 @@ use Illuminate\Queue\SerializesModels;
 class TestEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    
+    public $message;
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -31,6 +32,13 @@ class TestEvent implements ShouldBroadcast
     {
         return [
             new Channel('reverb-test'),
+        ];
+    }
+
+    public function broadcastWith(): array
+    {
+        return [
+            'message' => $this->message,
         ];
     }
 }
