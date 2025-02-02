@@ -172,5 +172,13 @@
                 </div>
             </div>
         </div>
+        <script>
+          window.addEventListener("DOMContentLoaded", function () {
+            window.Echo.channel("reverb-test") 
+                .listen("TestEvent", (event) => {
+                    console.log("Event received:", event);
+                });
+        });
+        </script>
     </body>
 </html>
